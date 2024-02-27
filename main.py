@@ -56,9 +56,21 @@ for filepath in filepaths:
     pdf.set_font(family="Times", size=11, style="B")
     pdf.cell(w=30, h=8, txt=f"The total amount is {total_sum}", ln=1)
 
-    # Company logo
+    disclaimer_text = """
+    Why do we use it?
+    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its
+    layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to 
+    using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web 
+    page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many 
+    web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes 
+    on purpose (injected humour and the like).
+    """
+
+    # Company info
     pdf.set_font(family="Times", size=14, style="B")
     pdf.cell(w=28, h=11, txt=f"Gruand Ltd")
     pdf.image("logo.png", w=12)
+    pdf.set_font(family="Times", size=8)
+    pdf.multi_cell(w=0, h=6, txt=disclaimer_text)
 
     pdf.output(f"pdfs/invoice-{invoice_number}.pdf")
